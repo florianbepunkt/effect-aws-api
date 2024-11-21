@@ -2,11 +2,7 @@ import { Construct } from "constructs";
 import { HttpApi, type HttpMethod } from "@effect/platform";
 import { HttpLambdaIntegration } from "aws-cdk-lib/aws-apigatewayv2-integrations";
 import * as apigw2 from "aws-cdk-lib/aws-apigatewayv2";
-import * as apigw2Authorizers from "aws-cdk-lib/aws-apigatewayv2-authorizers";
-import * as cdk from "aws-cdk-lib";
-import * as cognito from "aws-cdk-lib/aws-cognito";
 import * as lambda from "aws-cdk-lib/aws-lambda";
-import * as ssm from "aws-cdk-lib/aws-ssm";
 
 type AnyHttpApi = HttpApi.HttpApi<any, any, any>;
 
