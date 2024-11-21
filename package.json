@@ -1,0 +1,39 @@
+{
+  "name": "effect-aws-api",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "sideEffects": false,
+  "files": [
+    "/dist",
+    "/src"
+  ],
+  "scripts": {
+    "prebuild": "rimraf -rf ./dist",
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "test": "vitest --reporter=verbose",
+    "typecheck": "tsc --noEmit",
+    "typecheck:watch": "tsc --noEmit -w"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "8.10.145",
+    "prettier": "3.3.3",
+    "rimraf": "6.0.1",
+    "type-fest": "4.27.0",
+    "typescript": "5.6.3",
+    "vitest": "2.1.5"
+  },
+  "dependencies": {
+    "@effect-aws/lambda": "1.2.0",
+    "@effect/platform": "0.69.24",
+    "aws-cdk-lib": "2.168.0",
+    "constructs": "10.4.2",
+    "effect": "3.10.15"
+  }
+}
