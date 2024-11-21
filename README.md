@@ -4,7 +4,7 @@ Glue code to use effectful APIs with AWS ApiGateway and Lambda.
 
 ## Open questions / problems:
 
-1. How to apply server middleware? Necessary to enforce global authentication.
+1. How to apply server middleware? Necessary to enforce global authentication. https://github.com/florianbepunkt/effect-aws-api/blob/2760d178e692e191cc29ca60dd4566958d973caf/src/lambda-adapter.ts#L34
 
 2. How to handle route not found errors?
 
