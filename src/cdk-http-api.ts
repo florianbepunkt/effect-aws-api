@@ -82,9 +82,7 @@ export class EffectHttpApi<Definition extends AnyHttpApi> extends Construct {
   private createResources() {
     const api = this.api;
     const handler = this.handler;
-
     const integration = new HttpLambdaIntegration("handler-integration", handler);
-    // const pathResourceMap: Record<string, apigw.IResource> = { "/": api.root };
 
     HttpApi.reflect(this.props.definition, {
       onEndpoint({ endpoint }) {
