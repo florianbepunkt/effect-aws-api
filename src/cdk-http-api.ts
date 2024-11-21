@@ -17,12 +17,12 @@ interface ApiProps<Definition extends AnyHttpApi> {
 }
 
 /**
- * Creates a tenant facing HTTP API from a given API definition.
+ * Creates a HTTP API from a given API definition.
  *
  * The api works as a lambdalith, meaning all resources are served by the same lambda, that
  * implements the given API definition.
  */
-export class TenantFacingHttpApi<Definition extends AnyHttpApi> extends Construct {
+export class EffectHttpApi<Definition extends AnyHttpApi> extends Construct {
   /**
    * API gateway
    */
@@ -61,8 +61,6 @@ export class TenantFacingHttpApi<Definition extends AnyHttpApi> extends Construc
           "Authorization",
           "X-Api-Key",
           "X-Amz-Security-Token",
-          "client-id",
-          "tenant-id",
         ],
         allowMethods: [
           apigw2.CorsHttpMethod.OPTIONS,
@@ -92,7 +90,6 @@ export class TenantFacingHttpApi<Definition extends AnyHttpApi> extends Construc
       onEndpoint({ endpoint }) {
         const method = endpoint.method;
         const path = endpoint.path.replace(/:(\w+)[^/]*/g, "{$1}");
-        // const segments = path.split("/").filter(Boolean);
 
         const toApiGwMethod = (i: HttpMethod.HttpMethod): apigw2.HttpMethod => {
           switch (i) {

@@ -13,12 +13,12 @@ interface ApiProps<Definition extends AnyHttpApi> {
 }
 
 /**
- * Creates a tenant facing REST API from a given API definition.
+ * Creates a  REST API from a given API definition.
  *
  * The api works as a lambdalith, meaning all resources are served by the same lambda, that
  * implements the given API definition.
  */
-export class TenantFacingRestApi<Definition extends AnyHttpApi> extends Construct {
+export class EffectRestApi<Definition extends AnyHttpApi> extends Construct {
   /**
    * API gateway
    */
@@ -56,8 +56,6 @@ export class TenantFacingRestApi<Definition extends AnyHttpApi> extends Construc
           "Authorization",
           "X-Api-Key",
           "X-Amz-Security-Token",
-          "client-id",
-          "tenant-id",
         ],
         allowOrigins: apigw.Cors.ALL_ORIGINS,
         allowMethods: apigw.Cors.ALL_METHODS,
