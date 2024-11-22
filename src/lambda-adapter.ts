@@ -30,7 +30,21 @@ export function makeApiLambda<R, E1, E2>(
   apiLayer: Layer.Layer<HttpApi.Api, E1, R>,
   globalLayer?: Layer.Layer<Exclude<R, RawLambdaInput>, E2>,
 ): APIGatewayProxyHandler {
-  // TODO: how to apply server middleware here?
+  /**
+   * NOTE: You could apply "server-wide" middleware here. If this is the middleware:
+   *
+   * const MyLogger = HttpMiddleware.make((app) =>
+   *   Effect.gen(function* () {
+   *   console.log("LOGGED")
+   *   return yield* app
+   *   })
+   * )
+   *
+   * It can be applied like this:
+   *
+   * const app = HttpApiBuilder.httpApp.pipe(Effect.flatten, MyLogger);
+   *
+   */
   const app = HttpApiBuilder.httpApp.pipe(Effect.flatten);
 
   // dependencies
