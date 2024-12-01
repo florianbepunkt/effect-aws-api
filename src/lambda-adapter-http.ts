@@ -39,7 +39,10 @@ export const makeApiLambdaWithMiddleware = (middleware?: HttpMiddleware.HttpMidd
     );
 
     // dependencies
-    const HttpLayer = HttpServer.layerContext.pipe(Layer.merge(HttpApiBuilder.Router.Live));
+    const HttpLayer = HttpServer.layerContext.pipe(
+      Layer.merge(HttpApiBuilder.Router.Live),
+      Layer.merge(HttpApiBuilder.Middleware.layer),
+    );
 
     // TODO: I would like to merge HttpLayer into the given runtime and/or default runtime, but compiler errors, no idea why
     const globalRuntime = globalLayer
