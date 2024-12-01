@@ -51,11 +51,14 @@ export class EffectRestApi<Definition extends AnyHttpApi> extends Construct {
     const api = new apigw.RestApi(this, "API", {
       defaultCorsPreflightOptions: {
         allowHeaders: [
+          "Accept",
           "Content-Type",
           "X-Amz-Date",
           "Authorization",
           "X-Api-Key",
           "X-Amz-Security-Token",
+          "b3",
+          "traceparent",
         ],
         allowOrigins: apigw.Cors.ALL_ORIGINS,
         allowMethods: apigw.Cors.ALL_METHODS,

@@ -52,11 +52,14 @@ export class EffectHttpApi<Definition extends AnyHttpApi> extends Construct {
       apiName: `Unnamed HTTP Api`,
       corsPreflight: {
         allowHeaders: [
+          "Accept",
           "Content-Type",
           "X-Amz-Date",
           "Authorization",
           "X-Api-Key",
           "X-Amz-Security-Token",
+          "b3",
+          "traceparent",
         ],
         allowMethods: [
           apigw2.CorsHttpMethod.OPTIONS,
