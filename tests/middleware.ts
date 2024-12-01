@@ -1,6 +1,6 @@
 import { Context, Effect, Layer, Schema as S } from "effect";
 import { HttpApiMiddleware, HttpApiSchema, HttpServerRequest } from "@effect/platform";
-import { RawLambdaInput } from "../src/lambda-adapter.js";
+import { RawLambdaInput } from "../src/lambda-adapter-rest.js";
 
 export class AuthContext extends S.Class<AuthContext>("AuthContext")({
   accountId: S.NonEmptyString,

@@ -2,7 +2,7 @@ import { Authorization, Unauthorized } from "./middleware.js";
 import { createApiGatewayEvent, createLambdaContext } from "./aws-event-mock/mock-api-gateway-event.js";
 import { describe, expect, it } from "vitest";
 import { Effect, Layer } from "effect";
-import { makeApiLambda, RawLambdaInput } from "../src/lambda-adapter.js";
+import { makeApiLambda, RawLambdaInput } from "../src/lambda-adapter-rest.js";
 import { SimpleApiLive, SimpleApiWithoutMiddleware } from "./api-simple.js";
 
 describe("LambdaAdapter", async () => {
@@ -31,6 +31,7 @@ describe("LambdaAdapter", async () => {
     });
     const context = createLambdaContext();
     const resp = await handler(event, context);
+
     expect(resp).toStrictEqual({
       body: '{"foo":"bar2"}',
       headers: {
@@ -62,6 +63,7 @@ describe("LambdaAdapter", async () => {
     });
     const context = createLambdaContext();
     const resp = await handler(event, context);
+
     expect(resp).toStrictEqual({
       body: '{"foo":"test"}',
       headers: {
